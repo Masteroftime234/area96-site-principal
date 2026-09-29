@@ -15,11 +15,6 @@ header nav a[aria-current]{color:#fff;border-color:#fff}
 .dl{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-size:.9rem}
 .ico{width:1.3rem;height:1.3rem;fill:currentColor;flex:none}
 .e{fill:var(--eye,#07090c)}
-.hero{position:relative;min-height:calc(100vh - 140px);display:flex;align-items:center;padding:3rem 4vw;background:var(--bg) url(assets/hero.jpg) right center/auto 118% no-repeat}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 22%,rgba(7,9,12,.55) 48%,transparent 75%)}
-.hero>div{position:relative;max-width:34rem}
-.hero h1{font:500 clamp(1.8rem,4.5vw,3.2rem)/1 var(--serif);letter-spacing:.42em;margin:0 0 1.5rem}
-.hero p{color:#c9cfd6;font-size:1.15rem;margin:0 0 2rem}
 .btn{--eye:var(--blurple);display:inline-flex;align-items:center;gap:.7rem;background:var(--blurple);color:#fff;font-weight:600;padding:.95rem 1.6rem;border-radius:8px;text-decoration:none;box-shadow:0 0 32px rgba(88,101,242,.45)}
 .btn:hover{background:#6b77f5}
 .strip{display:flex;flex-wrap:wrap;gap:1rem 0;align-items:center;padding:1rem 4vw;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
@@ -40,8 +35,18 @@ h2{font:400 1.7rem/1.1 var(--display);letter-spacing:.04em;margin:0 0 .3rem}
 header{flex-wrap:wrap}
 header nav{order:3;width:100%;gap:1.2rem;overflow-x:auto}
 .dl span{display:none}
-.hero{min-height:88vh;align-items:flex-end;background-size:cover;background-position:65% top}
-.hero::before{background:linear-gradient(180deg,transparent 15%,var(--bg) 80%)}
 .strip em{margin-left:0;padding-left:0;width:100%}
 .strip span{border:0;padding:0 1.2rem 0 0}
+}
+.hero{position:relative;width:min(100%,calc((100vh - 140px)*1.776));aspect-ratio:1671/941;margin:0 auto}
+.hero::before{content:"";position:absolute;inset:0;background:url(assets/hero.jpg) center/100% 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.hero>div{position:absolute;left:17%;top:54%;width:33%;text-align:center}
+.hero p{color:#c9cfd6;font-size:clamp(.8rem,1.35vw,1.25rem);margin:0 0 clamp(.8rem,2vw,2rem)}
+.hero .btn{font-size:clamp(.8rem,1.2vw,1.1rem);padding:.85em 1.5em}
+@media (max-width:900px){
+.hero{width:100%;aspect-ratio:auto}
+.hero::before{position:relative;display:block;inset:auto;aspect-ratio:4/3;background-size:cover;background-position:64% center}
+.hero>div{position:static;width:auto;padding:1.5rem 4vw 2.5rem}
+.hero p{font-size:1.05rem}
+.hero .btn{font-size:1rem}
 }
