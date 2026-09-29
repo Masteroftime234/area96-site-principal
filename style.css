@@ -1,52 +1,412 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500;600&display=swap');
-:root{--bg:#07090c;--panel:#0e1218;--text:#e8ebef;--muted:#9aa3ad;--line:rgba(255,255,255,.14);--blurple:#5865f2;--red:#b3202a;--display:'Bebas Neue',Impact,sans-serif;--serif:'Cormorant Garamond',Georgia,serif;--ui:'Inter',system-ui,sans-serif}
-*{box-sizing:border-box}
-html{color-scheme:dark}
-body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.6 var(--ui);min-height:100vh;display:flex;flex-direction:column}
-main{flex:1}
-a{color:inherit}
-:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 4vw;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(7,9,12,.88);backdrop-filter:blur(8px);z-index:10}
-.logo{font:400 2rem/1 var(--display);letter-spacing:.04em;text-decoration:none}
-header nav{display:flex;gap:2rem}
-header nav a{text-decoration:none;color:var(--muted);padding:.3rem 0;border-bottom:2px solid transparent}
-header nav a[aria-current]{color:#fff;border-color:#fff}
-.dl{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-size:.9rem}
-.ico{width:1.3rem;height:1.3rem;fill:currentColor;flex:none}
-.e{fill:var(--eye,#07090c)}
-.btn{--eye:var(--blurple);display:inline-flex;align-items:center;gap:.7rem;background:var(--blurple);color:#fff;font-weight:600;padding:.95rem 1.6rem;border-radius:8px;text-decoration:none;box-shadow:0 0 32px rgba(88,101,242,.45)}
-.btn:hover{background:#6b77f5}
-.strip{display:flex;flex-wrap:wrap;gap:1rem 0;align-items:center;padding:1rem 4vw;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
-.strip span{display:flex;gap:.6rem;align-items:center;padding:0 1.6rem;border-right:1px solid var(--line)}
-.strip span:first-child{padding-left:0}
-.strip em{margin-left:auto;padding-left:1.6rem}
-.ico.s{fill:none;stroke:currentColor;stroke-width:1.6}
-.page{max-width:900px;margin:0 auto;padding:4rem 4vw}
-.page h1{font:400 clamp(3rem,8vw,5rem)/1 var(--display);letter-spacing:.03em;margin:0 0 .5rem}
-.intro{color:var(--muted);font-size:1.15rem;max-width:55ch;margin:0 0 3rem}
-.item{border-left:3px solid var(--red);padding:.2rem 0 .2rem 1.2rem;margin:0 0 2rem}
-h2{font:400 1.7rem/1.1 var(--display);letter-spacing:.04em;margin:0 0 .3rem}
-.item p,.card p{margin:0;color:var(--muted);max-width:60ch}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-bottom:3rem}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.4rem}
-.small{font-size:.85rem;color:var(--muted);margin-top:3rem}
-@media (max-width:900px){
-header{flex-wrap:wrap}
-header nav{order:3;width:100%;gap:1.2rem;overflow-x:auto}
-.dl span{display:none}
-.strip em{margin-left:0;padding-left:0;width:100%}
-.strip span{border:0;padding:0 1.2rem 0 0}
+
+:root {
+    --bg: #07090c;
+    --panel: #0e1218;
+    --text: #e8ebef;
+    --muted: #9aa3ad;
+    --line: rgba(255,255,255,.14);
+    --blurple: #5865f2;
+    --red: #b3202a;
+    --display: 'Bebas Neue', Impact, sans-serif;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --ui: 'Inter', system-ui, sans-serif;
 }
-.hero{position:relative;width:min(100%,calc((100vh - 140px)*1.776));aspect-ratio:1671/941;margin:0 auto}
-.hero::before{content:"";position:absolute;inset:0;background:url(assets/hero.jpg) center/100% 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.hero>div{position:absolute;left:17%;top:54%;width:33%;text-align:center}
-.hero p{color:#c9cfd6;font-size:clamp(.8rem,1.35vw,1.25rem);margin:0 0 clamp(.8rem,2vw,2rem)}
-.hero .btn{font-size:clamp(.8rem,1.2vw,1.1rem);padding:.85em 1.5em}
-@media (max-width:900px){
-.hero{width:100%;aspect-ratio:auto}
-.hero::before{position:relative;display:block;inset:auto;aspect-ratio:4/3;background-size:cover;background-position:64% center}
-.hero>div{position:static;width:auto;padding:1.5rem 4vw 2.5rem}
-.hero p{font-size:1.05rem}
-.hero .btn{font-size:1rem}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 1rem/1.6 var(--ui);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+/* ==============================
+   HEADER / NAVIGATION
+============================== */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .9rem 4vw;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: rgba(7,9,12,.88);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+.logo {
+    font: 400 2rem/1 var(--display);
+    letter-spacing: .04em;
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    gap: 2rem;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: .3rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+header nav a[aria-current] {
+    color: #fff;
+    border-color: #fff;
+}
+
+.dl {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+.ico {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: currentColor;
+    flex: none;
+}
+
+.e {
+    fill: var(--eye, #07090c);
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.btn {
+    --eye: var(--blurple);
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    background: var(--blurple);
+    color: #fff;
+    font-weight: 600;
+    padding: .95rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 32px rgba(88,101,242,.45);
+    transition: background .2s ease, transform .2s ease;
+}
+
+.btn:hover {
+    background: #6b77f5;
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   HERO - ACCUEIL AREA-96
+============================== */
+
+.hero {
+    position: relative;
+    width: min(100%, calc((100vh - 140px) * 1.776));
+    aspect-ratio: 1671 / 941;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Image de fond compatible Vercel */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("/hero.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent,
+        #000 5%,
+        #000 95%,
+        transparent
+    );
+
+    mask-image: linear-gradient(
+        90deg,
+        transparent,
+        #000 5%,
+        #000 95%,
+        transparent
+    );
+}
+
+/* Texte et bouton du Hero */
+
+.hero > div {
+    position: absolute;
+    left: 17%;
+    top: 54%;
+    width: 33%;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero p {
+    color: #c9cfd6;
+    font-size: clamp(.8rem, 1.35vw, 1.25rem);
+    margin: 0 0 clamp(.8rem, 2vw, 2rem);
+}
+
+.hero .btn {
+    font-size: clamp(.8rem, 1.2vw, 1.1rem);
+    padding: .85em 1.5em;
+}
+
+/* ==============================
+   BANDEAU INFERIEUR
+============================== */
+
+.strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 0;
+    align-items: center;
+    padding: 1rem 4vw;
+    border-top: 1px solid var(--line);
+    font-size: .85rem;
+    color: var(--muted);
+}
+
+.strip span {
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+    padding: 0 1.6rem;
+    border-right: 1px solid var(--line);
+}
+
+.strip span:first-child {
+    padding-left: 0;
+}
+
+.strip em {
+    margin-left: auto;
+    padding-left: 1.6rem;
+}
+
+.ico.s {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+}
+
+/* ==============================
+   PAGES
+============================== */
+
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 4vw;
+}
+
+.page h1 {
+    font: 400 clamp(3rem, 8vw, 5rem)/1 var(--display);
+    letter-spacing: .03em;
+    margin: 0 0 .5rem;
+}
+
+.intro {
+    color: var(--muted);
+    font-size: 1.15rem;
+    max-width: 55ch;
+    margin: 0 0 3rem;
+}
+
+.item {
+    border-left: 3px solid var(--red);
+    padding: .2rem 0 .2rem 1.2rem;
+    margin: 0 0 2rem;
+}
+
+h2 {
+    font: 400 1.7rem/1.1 var(--display);
+    letter-spacing: .04em;
+    margin: 0 0 .3rem;
+}
+
+.item p,
+.card p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+}
+
+/* ==============================
+   CARTES
+============================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.4rem;
+}
+
+.small {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-top: 3rem;
+}
+
+/* ==============================
+   RESPONSIVE - TABLETTES
+============================== */
+
+@media (max-width: 900px) {
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    header nav {
+        order: 3;
+        width: 100%;
+        gap: 1.2rem;
+        overflow-x: auto;
+    }
+
+    .dl span {
+        display: none;
+    }
+
+    .strip em {
+        margin-left: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .strip span {
+        border: 0;
+        padding: 0 1.2rem 0 0;
+    }
+
+    /* Hero tablette et mobile */
+
+    .hero {
+        width: 100%;
+        aspect-ratio: auto;
+    }
+
+    .hero::before {
+        position: relative;
+        display: block;
+        inset: auto;
+        aspect-ratio: 4 / 3;
+        background-size: cover;
+        background-position: 64% center;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .hero > div {
+        position: static;
+        width: auto;
+        padding: 1.5rem 4vw 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.05rem;
+    }
+
+    .hero .btn {
+        font-size: 1rem;
+    }
+}
+
+/* ==============================
+   RESPONSIVE - PETITS MOBILES
+============================== */
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 1.7rem;
+    }
+
+    header {
+        padding: .8rem 4vw;
+    }
+
+    header nav {
+        gap: 1rem;
+        font-size: .9rem;
+    }
+
+    .hero::before {
+        aspect-ratio: 3 / 4;
+        background-position: 64% center;
+    }
+
+    .hero > div {
+        padding: 1.5rem 5vw 2rem;
+    }
+
+    .page {
+        padding: 3rem 5vw;
+    }
+
+    .strip {
+        padding: 1rem 5vw;
+    }
+
+    .strip span {
+        font-size: .8rem;
+    }
 }
