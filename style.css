@@ -3,7 +3,7 @@
 *{box-sizing:border-box}
 html{color-scheme:dark}
 body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.6 var(--ui);min-height:100vh;display:flex;flex-direction:column}
-main{flex:1}
+main{flex:1;display:flex;flex-direction:column}
 a{color:inherit}
 :focus-visible{outline:2px solid #fff;outline-offset:3px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -22,7 +22,7 @@ header nav a[aria-current]{color:#fff;border-color:#fff}
 .strip span:first-child{padding-left:0}
 .strip em{margin-left:auto;padding-left:1.6rem}
 .ico.s{fill:none;stroke:currentColor;stroke-width:1.6}
-.page{max-width:900px;margin:0 auto;padding:4rem 4vw}
+.page{width:100%;max-width:900px;margin:0 auto;padding:4rem 4vw}
 .page h1{font:400 clamp(3rem,8vw,5rem)/1 var(--display);letter-spacing:.03em;margin:0 0 .5rem}
 .intro{color:var(--muted);font-size:1.15rem;max-width:55ch;margin:0 0 3rem}
 .item{border-left:3px solid var(--red);padding:.2rem 0 .2rem 1.2rem;margin:0 0 2rem}
@@ -38,13 +38,13 @@ header nav{order:3;width:100%;gap:1.2rem;overflow-x:auto}
 .strip em{margin-left:0;padding-left:0;width:100%}
 .strip span{border:0;padding:0 1.2rem 0 0}
 }
-.hero{--F:56.31vw;--H:min(var(--F),max(520px,calc(100vh - 140px)));position:relative;width:100%;height:var(--H);overflow:hidden;background:var(--bg)}
+.hero{--F:56.31vw;--H:min(var(--F),max(520px,calc(100vh - 140px)));position:relative;width:100%;height:auto;min-height:var(--H);flex:1 0 auto;overflow:hidden;background:var(--bg) url(assets/hero.jpg) center bottom/cover no-repeat}
 .hero .fr{position:absolute;left:0;width:100%;height:var(--F);top:calc((var(--H) - var(--F))*.5);background:url(assets/hero.jpg) center/100% 100% no-repeat}
 .hero .fr>div{position:absolute;left:17%;top:60%;width:33%;text-align:center}
 .hero p{color:#dfe3e8;font-size:clamp(.8rem,1.15vw,1.1rem);margin:0 0 clamp(.8rem,1.6vw,1.6rem);text-shadow:0 2px 12px #000}
 .hero .btn{font-size:clamp(.8rem,1.1vw,1rem);padding:.85em 1.5em}
 @media (max-width:900px){
-.hero{height:auto;overflow:visible}
+.hero{min-height:0;flex:none;overflow:visible;background:var(--bg)}
 .hero .fr{position:static;height:auto;background:none}
 .hero .fr::before{content:"";display:block;aspect-ratio:4/3;background:url(assets/hero.jpg) 64% center/cover no-repeat}
 .hero .fr>div{position:static;width:auto;padding:1.5rem 4vw 2.5rem}
